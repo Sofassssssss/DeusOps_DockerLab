@@ -1,9 +1,0 @@
-SQLAlchemy
-Werkzeug
-WTForms
-PyJWT
-Flask
-Flask-WTF
-Flask-Login
-alembic
-SQLAlchemy-serializer
