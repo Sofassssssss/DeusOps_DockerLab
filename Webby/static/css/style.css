@@ -1,0 +1,85 @@
+body {
+    background-color: aliceblue !important;
+}
+.logo {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    max-width: 150px;
+    font-size: 25px;
+    font-weight: 700;
+    line-height: 20px;
+}
+a {
+    text-decoration: none !important;
+}
+.header {
+    background-color: aliceblue;
+    margin-bottom: 10px;
+    padding: 10px;
+}
+.yellow {
+    color: yellow;
+}
+.user_brand {
+    text-decoration: none;
+    color: lightslategray;
+}
+div {
+    margin: 10px;
+}
+form {
+    margin-left: auto;
+    margin-right: auto;
+    background-color: white;
+    border: solid 2px aliceblue;
+    border-radius: 25px;
+    padding: 10px;
+}
+.error_field {
+    border: red solid 1px;
+}
+.message {
+    color: red;
+    font: small-caption;
+}
+.submit-button {
+    width: 100%;
+}
+.fit-content {
+    max-width: fit-content;
+}
+textarea {
+    width: 75%!important
+}
+.scroll-interests {
+    height: 100px;
+    overflow: auto;
+}
+html,
+body {
+    height: 100%;
+}
+footer {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 80px;
+}
+.wrapper {
+  position: relative;
+  min-height: 100%;
+  margin: 0!important
+}
+main {
+    padding-bottom: 120px;
+    padding-right: 100px!important;
+    margin-left: 250px!important
+}
+.message_box {
+    overflow-y: auto;
+    max-height: 700px
+}
