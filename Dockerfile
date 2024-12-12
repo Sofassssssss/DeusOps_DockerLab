@@ -9,5 +9,8 @@ COPY . /app
 
 RUN mkdir -p /app/static /app/templates
 
+RUN addgroup -S notroot && adduser -S imnotroot -G notroot
+USER imnotroot
+
 CMD alembic upgrade head && python main.py
 

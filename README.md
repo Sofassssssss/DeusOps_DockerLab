@@ -1,4 +1,4 @@
-## Лабораторная работа Docker: докеризация приложения
+_## Лабораторная работа Docker: докеризация приложения
 #### Вовченко София 2384
 
 ---
@@ -23,8 +23,10 @@ COPY . /app
 
 RUN mkdir -p /app/static /app/templates
 
-CMD alembic upgrade head && python main.py
+RUN addgroup -S notroot && adduser -S imnotroot -G notroot
+USER imnotroot
 
+CMD alembic upgrade head && python main.py
 
 ```
 
@@ -37,13 +39,13 @@ services:
   db:
     image: postgres:15-alpine
     environment:
-      POSTGRES_USER: sofiavovchenko
-      POSTGRES_PASSWORD: Wmi_1234
-      POSTGRES_DB: webby
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
     ports:
       - "5433:5432"
     healthcheck:
-      test: pg_isready -U $$POSTGRES_USER -d $$POSTGRES_DB
+      test: pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}
       interval: 5s
       timeout: 3s
       retries: 5
@@ -54,7 +56,7 @@ services:
       - ./static:/app/static
       - ./templates:/app/templates
     environment:
-      DB_URL: postgresql+psycopg2://sofiavovchenko:Wmi_1234@db:5432/webby
+      DB_URL: postgresql+psycopg2://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db:5432/${POSTGRES_DB}
     ports:
       - "8080:8080"
     depends_on:
@@ -71,6 +73,4 @@ services:
 Также определен environment для DB_URL и проброшен порт 8080 на 8080.
 В depends_on написано от чего зависит этот сервис, в частности он не запустится пока db не пройдет healthcheck. 
 
-Итоговый образ получился размером 192MB.
-
-В качестве проверки можно зайти на localhost:8080 и посмотреть приложение.
+В качестве проверки можно зайти на localhost:8080 и посмотреть приложение._
